@@ -127,7 +127,7 @@ button {
 #user-icon-content {
   position: absolute;
   right: 0;
-  bottom: -390%;
+  bottom: -369%;
   display: none;
   flex-direction: column;
   align-items: center;
