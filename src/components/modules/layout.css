@@ -1,0 +1,235 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth;
+}
+
+#gatsby-focus-wrapper {
+  background-image: url("../../images/backgroundNatureNWT.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+#wholePage {
+  max-width: 60%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 0px 10px black;
+}
+
+#pageContent {
+  margin-top: 2.8em;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  flex: 1;
+  z-index: 2;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  box-sizing: border-box;
+  z-index: 3;
+  padding: 0.65em 3em;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+}
+
+#header a {
+  width: 2em;
+  height: 1.75em;
+}
+
+#footer {
+  background-color: white;
+  color: rgb(73, 71, 71);
+  width: 100%;
+  padding: 0.5em 0;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.fa-leaf:before {
+  font-size: 1.5em;
+  color: rgb(8, 187, 8);
+  cursor: pointer;
+}
+
+#user-icon {
+  display: none;
+  color: green;
+  font-size: 1.5em;
+}
+
+#searchBar {
+  margin-left: 10em;
+}
+
+#searchBar input {
+  padding: 0.35em 1em;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  background-color: rgba(117, 115, 115, 0.197);
+}
+
+#searchBar input::placeholder {
+  color: rgb(29, 203, 29);
+}
+
+#loginButton {
+  margin-left: 1em;
+  border: 1px solid green;
+  background-color: transparent;
+  color: rgb(8, 187, 8);
+  transition: 0.3s;
+}
+
+#loginButton:hover {
+  color: white;
+  border-color: transparent;
+  background-color: rgba(33, 162, 191, 0.571);
+}
+
+#signUpButton {
+  background-color: rgb(8, 187, 8);
+  color: white;
+  border: none;
+  transition: 0.3s;
+}
+
+#signUpButton:hover {
+  background-color: rgba(8, 187, 8, 0.803);
+}
+
+#logRegButtons button {
+  display: inline;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 0.3em 1em;
+  outline: none;
+  border-radius: 10px;
+}
+
+button {
+  cursor: pointer;
+}
+
+#user-icon-content {
+  position: absolute;
+  right: 0;
+  bottom: -390%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em 0;
+  background-color: rgba(8, 187, 8, 0.95);
+}
+
+#user-icon-content label {
+  margin: 0;
+  padding: 0 1em;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  letter-spacing: 0.75px;
+}
+
+#user-icon-content label:hover {
+  color: black;
+}
+
+#deleteAccount:hover {
+  color: red !important;
+}
+/*RESPONZIVNOST*******************************************************************************/
+@media only screen and (max-width: 830px) {
+  #wholePage {
+    max-width: 100% !important;
+    box-shadow: none;
+  }
+  #loggedInProfile {
+    display: none !important;
+  }
+  #content {
+    grid-template-columns: 100% !important;
+  }
+  #header {
+    width: 100%;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+  #changeAccountData,
+  #deleteAccountMessage {
+    width: 100% !important;
+  }
+  input[type="file"] {
+    width: 40% !important;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #logRegButtons {
+    margin-top: 0.75em;
+    grid-area: second;
+    display: flex;
+    justify-content: space-between;
+  }
+  #logRegButtons button {
+    padding: 0.1em 0;
+    width: 45%;
+  }
+
+  #header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "first first"
+      "second second";
+  }
+  #searchBar {
+    margin: 0 !important;
+    justify-self: flex-end;
+  }
+  #headerLeaf {
+    justify-self: flex-end;
+  }
+  #pageContent {
+    margin-top: 4.5em;
+  }
+  #userInfo {
+    width: 71% !important;
+  }
+  #failLogin {
+    top: 27.75% !important;
+  }
+  #takenUsername {
+    top: 30.75% !important;
+  }
+  #failPasswords {
+    top: 42% !important;
+  }
+  .comment {
+    font-size: 0.85em;
+  }
+  #newPostForm {
+    width: 90% !important;
+  }
+  #newPostForm input {
+    width: 80%;
+  }
+  #newPostPictureLocal {
+    width: 70% !important;
+  }
+}
+
+/*RESPONZIVNOST*******************************************************************************/

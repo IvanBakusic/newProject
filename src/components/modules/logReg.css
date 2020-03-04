@@ -1,0 +1,118 @@
+.logRegDiv {
+  margin-top: 2em;
+  margin-bottom: 12em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logRegDiv input:not(#signupPicture):not(#notServerPicture) {
+  width: 50%;
+  margin-bottom: 2.5em;
+  padding: 0.2em 0;
+  font-size: 1.025em;
+  outline: none;
+  border: 1px solid rgba(66, 65, 65, 0.5);
+  border-radius: 10px;
+  background-color: rgb(196, 195, 195);
+  color: black;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.logRegDiv input::placeholder {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.456);
+}
+
+.logRegDiv input:not(#signupPicture):not(#notServerPicture):focus {
+  box-shadow: 0px 0px 2px black;
+}
+
+#signupPicture {
+  width: 50%;
+  margin-bottom: 1.5em;
+  cursor: pointer;
+  outline: none;
+}
+
+#signupServerPicture {
+  margin-bottom: 1em;
+}
+
+#notServerPicture {
+  margin-bottom: 3em;
+  border: none;
+  outline: 0;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  width: 50%;
+  border-radius: 10px;
+  padding: 0.2em 0;
+  font-size: 1.025em;
+  text-align: center;
+}
+
+#loginSubmit,
+#signupSubmit {
+  outline: none;
+  border: none;
+  font-size: 1.35em;
+  font-weight: bold;
+  padding: 0.3em 1em;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.721);
+  transition: 0.3s;
+  box-shadow: 0.5px 0.5px 2px black, -0.5px -0.5px 2px black;
+}
+
+#loginSubmit:hover,
+#signupSubmit:hover {
+  letter-spacing: 2px;
+}
+
+.homeButton {
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 2px black;
+  font-size: 1.1em;
+  border-radius: 10px;
+  padding: 0.3em 0.9em;
+  background-color: rgb(179, 179, 179);
+  transition: 0.3s;
+}
+
+.homeButton:hover {
+  letter-spacing: 2px;
+}
+
+#failLogin {
+  display: none;
+  color: red;
+  position: absolute;
+  top: 23.75%;
+  letter-spacing: 0.6px;
+  font-weight: bold;
+}
+
+#takenUsername,
+#failPasswords,
+#needPicture {
+  display: none;
+  position: absolute;
+  color: red;
+  letter-spacing: 0.6px;
+  font-weight: bold;
+}
+
+#takenUsername {
+  top: 23.75%;
+}
+
+#failPasswords {
+  top: 33.5%;
+}
+
+#needPicture {
+  top: 43%;
+}

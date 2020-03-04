@@ -1,0 +1,214 @@
+#content {
+  display: grid;
+  grid-template-columns: 100%;
+  position: relative;
+}
+
+#newPost {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  margin: 0 auto 1.5em auto;
+  padding: 0.5em 0;
+  width: 80%;
+  font-size: 1.5em;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px green;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#newPost:hover {
+  transform: scale(1.05);
+}
+
+#newPost i {
+  margin-left: 0.7em;
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 0.2em 0.33em;
+  color: rgb(8, 187, 8);
+}
+
+/*override*/
+#newPost i:hover,
+#newPost i::before:hover {
+  transform: scale(1) !important;
+}
+
+#newPost label {
+  cursor: pointer;
+}
+
+#noPostsFound {
+  display: none;
+  position: absolute;
+  top: 30%;
+  transform: translate(-50%, 0%);
+  z-index: 10;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  color: red;
+}
+
+#deleteAccountMessage {
+  z-index: 3;
+  display: none;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  font-size: 1.75em;
+  background: rgb(150, 150, 150);
+  border-radius: 10px;
+  padding: 1em;
+}
+
+.deleteButtons {
+  width: 80%;
+  margin: 1.5em auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.deleteButtons button {
+  font-size: 1.15em;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0.2em 0.3em;
+  color: white;
+  transition: 0.3s;
+}
+
+.deleteButtons .cancelButton {
+  background-color: rgba(255, 0, 0, 0.825);
+}
+
+.deleteButtons .cancelButton:hover {
+  background-color: white;
+  color: rgba(255, 0, 0, 0.825);
+}
+
+.deleteButtons .acceptButton {
+  background-color: rgba(0, 128, 0, 0.825);
+}
+
+.deleteButtons .acceptButton:hover {
+  background-color: white;
+  color: rgba(0, 128, 0, 0.825);
+}
+
+#changeAccountData {
+  z-index: 2;
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: grey;
+  width: 50%;
+}
+
+#changeAccountData div {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 0;
+}
+
+#changeAccountData label,
+#newPostForm label {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1em;
+}
+
+#changeAccountData input,
+#newPostForm input {
+  padding: 0.2em 0.2em;
+  font-size: 1.05em;
+  text-align: center;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+#changeAccountData button,
+#newPostForm button {
+  margin-top: 2em;
+  border: none;
+  outline: none;
+  font-size: 1.35em;
+  font-weight: bold;
+  padding: 0.3em 1em;
+  border-radius: 10px;
+  transition: 0.3s;
+  box-shadow: 0.5px 0.5px 2px black, -0.5px -0.5px 2px black;
+  cursor: pointer;
+}
+
+#changeAccountData button:hover,
+#newPostForm button:hover {
+  letter-spacing: 3px;
+}
+
+#changePictureUrl {
+  margin-top: 1.25em;
+}
+
+#changeAccountData i,
+#newPostForm i {
+  color: white;
+  position: absolute;
+  top: 4%;
+  right: 2.5%;
+  padding: 0.2em 0.32em;
+  border-radius: 50%;
+}
+
+#changeAccountData i:hover,
+#newPostForm i:hover {
+  transform: scale(1);
+  color: green;
+  background-color: white;
+}
+
+#newPostForm {
+  padding: 1em;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 2;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  background-color: grey;
+}
+
+#newPostForm input {
+  margin-bottom: 1.35em;
+}
+
+#newPostDescription {
+  font-family: sans-serif;
+  letter-spacing: 0.5px;
+  text-align: left !important;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  height: 5em;
+  padding: 0.4em;
+  width: 60%;
+}
+
+#newPostPictureLocal {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
