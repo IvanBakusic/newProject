@@ -5,10 +5,9 @@ body {
   scroll-behavior: smooth;
 }
 
-#gatsby-focus-wrapper {
-  background-image: url("../../images/backgroundNatureNWT.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+#backgroundImage {
+  position: fixed;
+  z-index: -1;
 }
 
 #wholePage {
