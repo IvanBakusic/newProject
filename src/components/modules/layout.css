@@ -178,7 +178,7 @@ button {
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1023px) {
   #logRegButtons {
     margin-top: 0.75em;
     grid-area: second;
@@ -210,15 +210,6 @@ button {
   #userInfo {
     width: 71% !important;
   }
-  #failLogin {
-    top: 27.75% !important;
-  }
-  #takenUsername {
-    top: 30.75% !important;
-  }
-  #failPasswords {
-    top: 42% !important;
-  }
   .comment {
     font-size: 0.85em;
   }
@@ -239,6 +230,45 @@ button {
   }
   #backgroundImage {
     width: unset;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1300px) {
+  #backgroundImage {
+    display: none;
+  }
+  #gatsby-focus-wrapper {
+    background-image: url("../../images/backgroundNatureNWT.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #logRegButtons {
+    margin-top: 0.75em;
+    grid-area: second;
+    display: flex;
+    justify-content: space-between;
+  }
+  #logRegButtons button {
+    padding: 0.1em 0;
+    width: 45%;
+  }
+  #header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "first first"
+      "second second";
+  }
+  #searchBar {
+    margin: 0 !important;
+    justify-self: flex-end;
+  }
+  #headerLeaf {
+    justify-self: flex-end;
+  }
+  #pageContent {
+    margin-top: 4.5em;
   }
 }
 
