@@ -8,6 +8,7 @@ body {
 #backgroundImage {
   position: fixed;
   z-index: -1;
+  width: 100%;
 }
 
 #wholePage {
@@ -235,6 +236,9 @@ button {
   }
   .post {
     width: 90% !important;
+  }
+  #backgroundImage {
+    width: unset;
   }
 }
 
