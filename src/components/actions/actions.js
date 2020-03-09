@@ -527,6 +527,8 @@ function switchChangeDivs(dataToChange) {
   let pictureDiv = document.getElementById("changePicture")
   let parentDiv = usernameDiv.parentElement
 
+  document.getElementById("deleteAccountMessage").style.display = "none"
+
   switch (dataToChange) {
     case "username":
       parentDiv.style.display = "block"

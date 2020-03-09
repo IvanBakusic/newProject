@@ -233,7 +233,7 @@ button {
   }
 }
 
-@media only screen and (min-width: 1024px) and (max-width: 1300px) {
+@media only screen and (min-width: 1024px) and (max-width: 1200px) {
   #backgroundImage {
     display: none;
   }
