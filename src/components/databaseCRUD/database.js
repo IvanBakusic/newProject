@@ -73,6 +73,17 @@ function adjustHeader() {
         document.getElementById("user-icon").style.display = "block"
         document.getElementById("logRegButtons").style.display = "none"
         document.getElementById("searchBar").style.marginLeft = "0em"
+
+        let userObject = users.find(user => user.fullname == loggedUser)
+        if (typeof userObject !== "undefined") updateUserInfo(userObject)
+
+        let postIcons = document.getElementsByClassName("postIcons")
+        for (let i = 0; i < postIcons.length; i++)
+          postIcons[i].style.display = "flex"
+
+        let inputComments = document.getElementsByClassName("inputComment")
+        for (let i = 0; i < inputComments.length; i++)
+          inputComments[i].style.display = "flex"
       } else {
         pageContent.style.marginTop = "4.5em"
         header.style.display = "grid"
