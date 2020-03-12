@@ -69,6 +69,10 @@ function adjustHeader() {
       if (login) {
         header.style.display = "flex"
         pageContent.style.marginTop = "2em"
+
+        document.getElementById("user-icon").style.display = "block"
+        document.getElementById("logRegButtons").style.display = "none"
+        document.getElementById("searchBar").style.marginLeft = "0em"
       } else {
         pageContent.style.marginTop = "4.5em"
         header.style.display = "grid"
@@ -99,7 +103,7 @@ function adjustHeader() {
         document.getElementById("loggedInProfile").style.display = "none"
       }
     }
-  }, 0)
+  }, 100)
 }
 
 function setLastIds() {
