@@ -40,12 +40,14 @@ const SignupInputs = () => {
       <input
         id="signupPassword1"
         placeholder="Enter password"
+        type="password"
         onClick={removeTakenUsername}
         onKeyUp={enter}
       ></input>
       <input
         id="signupPassword2"
         placeholder="Repeat password"
+        type="password"
         onClick={removeTakenUsername}
         onKeyUp={enter}
       ></input>

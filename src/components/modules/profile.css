@@ -1,0 +1,43 @@
+#basicProfileInfo {
+  margin-top: 1.75em;
+  font-size: 2em;
+}
+
+#bookmarksDiv h1 {
+  font-size: 1.75em;
+}
+
+#bookmarksDiv h2 {
+  font-size: 1.5em;
+  color: red;
+}
+
+#bookmarksDiv {
+  margin-top: 5em;
+}
+
+#userBookmarks {
+  display: flex;
+  flex-direction: column;
+}
+
+#userBookmarks a,
+.linka {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: blue;
+  width: auto;
+  padding: 0.2em 1em;
+  margin: 0.5em auto;
+  background-color: rgba(128, 128, 128, 0.612);
+  border-radius: 10px;
+}
+
+#userBookmarks a:hover,
+.linka:hover {
+  color: white;
+}
+
+.linka {
+  color: green;
+}

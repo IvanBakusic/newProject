@@ -152,11 +152,13 @@ function putDisplayNone() {
 }
 
 function deleteAccount() {
-  putDisplayNone()
-  deleteUserAccount()
-  logOut()
-  minimizeUserContent()
   navigate("/")
+  putDisplayNone()
+  minimizeUserContent()
+  setTimeout(() => {
+    deleteUserAccount()
+    logOut()
+  }, 100)
 }
 
 function clearInputs() {
@@ -176,3 +178,4 @@ function hideUserInfo() {
   document.getElementById("userInfo").style.display = "none"
 }
 export default mainPage
+export { DeleteAccountMessage, LoggedInProfile, ChangeAccountData }

@@ -12,6 +12,11 @@
 .postUsernameInfo {
   font-size: 1.3em;
   margin-left: 0.5em;
+  cursor: pointer;
+}
+
+.postUsernameInfo:hover {
+  color: green;
 }
 
 #partaking {

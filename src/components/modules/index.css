@@ -1,7 +1,6 @@
 #content {
   display: grid;
   grid-template-columns: 100%;
-  position: relative;
 }
 
 #newPost {
@@ -59,7 +58,8 @@
   display: none;
   position: fixed;
   left: 50%;
-  transform: translate(-50%, 0%);
+  top: 30%;
+  transform: translate(-50%, -50%);
   font-size: 1.75em;
   background-color: rgb(157, 156, 156);
   box-shadow: 0px 0px 5px black;

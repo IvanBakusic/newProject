@@ -1,5 +1,6 @@
 import React from "react"
 import "../indexComponents/loggedInProfile.css"
+import { showUserInfo } from "./post"
 
 const LoggedInProfile = () => {
   //<button id="logOutContent">Log out</button> ovo stavit u dropdown menu user-icon-a
@@ -17,7 +18,7 @@ const BasicInfo = () => {
       <div className="postUserImage">
         <img src="https://i.ibb.co/vstpXcb/Barbossa.jpg" alt="profile.jpg" />
       </div>
-      <label className="postUsernameInfo"></label>
+      <label className="postUsernameInfo" onClick={showUserInfo}></label>
     </div>
   )
 }

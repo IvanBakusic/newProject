@@ -7,6 +7,7 @@ import {
   updateBookmark,
   updateLike,
   setUserInfo,
+  updatePressedProfile,
 } from "../actions/actions"
 import { navigate } from "gatsby"
 
@@ -166,8 +167,10 @@ function clickLike(e) {
 }
 
 function showUserInfo(e) {
-  setUserInfo(e.target.innerText)
-  document.getElementById("userInfo").style.display = "block"
+  updatePressedProfile(e.target.innerText) //ovdje bi treba dohvatit elemente profile page-a i popunit
+  navigate("/profile")
 }
 
 export default Post
+
+export { showUserInfo }

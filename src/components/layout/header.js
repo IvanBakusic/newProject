@@ -7,6 +7,7 @@ import {
   changeUsername,
   changePassword,
   changePicture,
+  switchChangeDivs,
 } from "../actions/actions"
 
 const Header = () => {
@@ -69,6 +70,7 @@ const UserIconContent = () => {
 function deleteAccountErrorPrevention() {
   document.getElementById("user-icon").click()
   document.getElementById("deleteAccountMessage").style.display = "block"
+  switchChangeDivs("deleteAccount")
 }
 
 function navigateToOtherPage(page) {

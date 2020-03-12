@@ -34,6 +34,7 @@ const LoginInputs = () => {
       <input
         id="loginPassword"
         placeholder="Enter password"
+        type="password"
         onClick={removeWarning}
         onKeyUp={enter}
       ></input>

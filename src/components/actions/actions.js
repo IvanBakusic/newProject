@@ -1,4 +1,6 @@
-import { navigate } from "gatsby"
+import { navigate, Link } from "gatsby"
+import React from "react"
+import ReactDOM from "react-dom"
 import {
   users,
   comments,
@@ -18,6 +20,8 @@ import {
   addNewPost,
   lastPostId,
   lastUserId,
+  updateBookmarksTable,
+  postUserBookmark,
 } from "../databaseCRUD/database"
 
 import nwtPicture from "../../images/backgroundNatureNWT.jpg"
@@ -25,6 +29,7 @@ import denisPicture from "../../images/djDenis1.png"
 import risitas from "../../images/risitas.jpg"
 
 var login = false
+var pressedProfile = null
 
 function filterSearch() {
   let atLeastOne = false
@@ -247,6 +252,7 @@ function updateElements(user) {
         inputComments[i].style.display = "flex"
 
       updateUserInfo(user)
+      updateLoggedUser(user.fullname)
     }, 500)
   } else {
     document.getElementById("logRegButtons").style.display = "inline-block"
@@ -331,19 +337,22 @@ function getUserPicture(user) {
 }
 
 function logOut() {
+  let page = document.getElementById("pageContent").children[0].innerText
+
   login = false
   let userIcon = document.getElementById("user-icon")
   userIcon.click()
   userIcon.style.display = "none"
   document.getElementById("logRegButtons").style.display = "inline"
-  document.getElementById("loggedInProfile").style.display = "none"
-
-  document.getElementById("content").style.gridTemplateColumns = "100%"
-
-  document.getElementById("newPost").style.display = "none"
+  if (page == "Travel experience") {
+    document.getElementById("loggedInProfile").style.display = "none"
+    document.getElementById("content").style.gridTemplateColumns = "100%"
+    document.getElementById("newPost").style.display = "none"
+    switchChangeDivs("logout")
+  }
 
   updateElements("nebitno")
-  switchChangeDivs("logout")
+
   document.getElementById("user-icon-content").style.display = "none"
 
   setTimeout(() => {
@@ -370,6 +379,7 @@ function deleteUserAccount() {
   })
 
   if (indexToDelete > -1) users.splice(indexToDelete, 1)
+  console.log(users)
 }
 
 function updatePostRemovalButtons() {
@@ -445,14 +455,25 @@ function getUserId(username) {
 }
 
 function updateBookmark(bookmark) {
+  let postID = bookmark.parentElement.parentElement.parentElement.getAttribute(
+    "id"
+  )
+  let userID = getUserId(loggedUser)
+  let userPostBookmark = {
+    postID: postID,
+    userID: userID,
+  }
+
   if (bookmark.classList.contains("fa-bookmark-o")) {
     bookmark.classList.remove("fa-bookmark-o")
     bookmark.classList.add("fa-bookmark")
     updateBookmarkNumber(1)
+    updateBookmarksTable(userPostBookmark, "add")
   } else {
     bookmark.classList.remove("fa-bookmark")
     bookmark.classList.add("fa-bookmark-o")
     updateBookmarkNumber(-1)
+    updateBookmarksTable(userPostBookmark, "remove")
   }
 }
 
@@ -527,7 +548,8 @@ function switchChangeDivs(dataToChange) {
   let pictureDiv = document.getElementById("changePicture")
   let parentDiv = usernameDiv.parentElement
 
-  document.getElementById("deleteAccountMessage").style.display = "none"
+  if (dataToChange != "deleteAccount")
+    document.getElementById("deleteAccountMessage").style.display = "none"
 
   switch (dataToChange) {
     case "username":
@@ -569,14 +591,17 @@ function switchChangeDivs(dataToChange) {
 function newUsername() {
   let textInput = document.querySelector("#changeUsername input")
   let username = textInput.value.trim()
-  if (username !== "") {
-    if (!checkIfUsernameExists(username)) {
-      let userObject = putNewUsername(username)
-      document.querySelector("#changeAccountData .fa-close").click()
-      updateUserInfo(userObject)
-      document.getElementById("headerLeaf").click()
-    }
-  } else textInput.value = ""
+  navigate("/")
+  setTimeout(() => {
+    if (username !== "") {
+      if (!checkIfUsernameExists(username)) {
+        let userObject = putNewUsername(username)
+        document.querySelector("#changeAccountData .fa-close").click()
+        updateUserInfo(userObject)
+        document.getElementById("headerLeaf").click()
+      }
+    } else textInput.value = ""
+  }, 100)
 }
 
 function newPassword() {
@@ -619,7 +644,9 @@ function newPicture() {
     let userObject = putNewPicture(urlPicture.value.trim())
     document.querySelector("#changeAccountData .fa-close").click()
     document.getElementById("headerLeaf").click()
-    updateUserInfo(userObject)
+    setTimeout(() => {
+      updateUserInfo(userObject)
+    }, 100)
   }
 }
 
@@ -702,6 +729,79 @@ function setUserInfo(rawUsername) {
     userObject.likes
 }
 
+function profileCheckHeader() {
+  if (login) {
+    document.getElementById("logRegButtons").style.display = "none"
+    document.getElementById("user-icon").style.display = "block"
+  } else {
+    document.getElementById("user-icon").style.display = "none"
+    document.getElementById("logRegButtons").style.display = "inline"
+  }
+}
+
+function setProfile() {
+  document.getElementById("pageContent").children[0].innerText = pressedProfile
+  let userObject = users.find(user => user.fullname == pressedProfile)
+  if (typeof userObject !== "undefined") {
+    let basicUserInfo = document.querySelector(
+      "#basicProfileInfo #userInfoGrid"
+    )
+    basicUserInfo.children[3].innerText = userObject.bookmarks
+    basicUserInfo.children[4].innerText = userObject.comments
+    basicUserInfo.children[5].innerText = userObject.likes
+
+    displayBookmarks(pressedProfile)
+  }
+}
+
+function displayBookmarks(pressedProfile) {
+  let userID = getUserId(pressedProfile)
+  let userPostValue = postUserBookmark.filter(
+    element => element.userID == userID
+  )
+
+  if (userPostValue.length !== 0) {
+    let bookmarkedPosts = filterBookmarkedPosts(userPostValue)
+
+    ReactDOM.render(
+      <>
+        <h1>Bookmarks</h1>
+        <div id="userBookmarks">
+          {bookmarkedPosts.map(post => {
+            return (
+              <Link to={"/#" + post.id} key={post.id} className="linka">
+                {post.location}
+              </Link>
+            )
+          })}
+        </div>
+      </>,
+      document.getElementById("bookmarksDiv")
+    )
+  } else {
+    ReactDOM.render(
+      <>
+        <h1>Bookmarks</h1>
+        <h2>This user hasn't bookmarked any post.</h2>
+      </>,
+      document.getElementById("bookmarksDiv")
+    )
+  }
+}
+
+function filterBookmarkedPosts(userPostValue) {
+  let bookmarkedPosts = []
+  userPostValue.forEach(element => {
+    let currentPost = posts.find(post => post.id == element.postID)
+    bookmarkedPosts.push(currentPost)
+  })
+  return bookmarkedPosts
+}
+
+function updatePressedProfile(username) {
+  pressedProfile = username.replace(":", "")
+}
+
 export {
   filterSearch,
   signupSubmit,
@@ -727,4 +827,9 @@ export {
   setUserInfo,
   login,
   clearPictureWarning,
+  profileCheckHeader,
+  updateUserInfo,
+  setProfile,
+  updatePressedProfile,
+  getUserId,
 }
